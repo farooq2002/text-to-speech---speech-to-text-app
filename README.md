@@ -98,17 +98,7 @@ We'd like to express our gratitude to the open-source community for the fantasti
 
 ## Contact
 
-If you have any questions or feedback, feel free to contact us at [your.email@example.com](mailto:your.email@example.com).
+If you have any questions or feedback, feel free to contact us at [your.email@example.com](mailto:farooqahmad.see.com).
 
-## Support Us
-
-If you find Speechify useful and wish to support its development, consider [donating](https://www.example.com/donate).
-
----
-
-Thank you for using Speechify! We hope this app simplifies your text-to-speech and speech-to-text needs. Enjoy the seamless experience, and happy speaking and transcribing!
-
-[![Download on the App Store](app_store_button.png)](https://apps.apple.com/speechify-app)
-[![Get it on Google Play](google_play_button.png)](https://play.google.com/store/speechify-app)
 
 *Made with ❤️ by Farooq Ahmad*
