@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:speech_to_text/speech_recognition_result.dart';
-import 'package:speech_to_text/speech_to_text.dart';
+import 'package:texttospeech/models/speech_to_text.dart';
+
 import 'package:texttospeech/widgets/icon_button.dart';
 import 'package:texttospeech/widgets/round_button.dart';
 
@@ -13,42 +13,14 @@ class SpeechToTextScreen extends StatefulWidget {
 }
 
 class _SpeechToTextScreenState extends State<SpeechToTextScreen> {
-  final SpeechToText speechToTextInstance = SpeechToText();
-  final textController = TextEditingController();
-  String recordedVoice = "";
   bool isLoading = false;
-
-  initializeSpeechToText() async {
-    await speechToTextInstance.initialize();
-    setState(() {});
-  }
-
-  startListenNow() async {
-    FocusScope.of(context).unfocus();
-    await speechToTextInstance.listen(onResult: onSpeechToTextResult);
-  }
-
-  stopListenNow() async {
-    await speechToTextInstance.stop();
-  }
-
-  onSpeechToTextResult(SpeechRecognitionResult speechRecognitionResult) async {
-    recordedVoice = speechRecognitionResult.recognizedWords;
-
-    textController.text = recordedVoice;
-    // print(recordedVoice);
-  }
-
-  onComplted() {
-    speechToTextInstance.isNotListening;
-    isLoading = false;
-  }
+  SpeechToTextModel speechToTextModel = SpeechToTextModel();
 
   @override
   void initState() {
     super.initState();
-    initializeSpeechToText();
-    onComplted();
+    speechToTextModel.initializeSpeechToText();
+    speechToTextModel.onComplted();
   }
 
   @override
@@ -73,9 +45,9 @@ class _SpeechToTextScreenState extends State<SpeechToTextScreen> {
                     : IconBtn(
                         icon: Icons.mic,
                         ontap: () {
-                          speechToTextInstance.isListening
-                              ? stopListenNow()
-                              : startListenNow();
+                          speechToTextModel.speechToTextInstance.isListening
+                              ? speechToTextModel.stopListenNow()
+                              : speechToTextModel.startListenNow(context);
                         },
                       ),
               ),
@@ -84,12 +56,12 @@ class _SpeechToTextScreenState extends State<SpeechToTextScreen> {
               ),
               TextField(
                 maxLines: 4,
-                controller: textController,
+                controller: speechToTextModel.textController,
                 decoration: const InputDecoration(
                     hintText: "your Speech", border: OutlineInputBorder()),
                 onChanged: (newText) {
                   setState(() {
-                    recordedVoice = newText;
+                    speechToTextModel.recordedVoice = newText;
                   });
                 },
               ),
@@ -104,7 +76,7 @@ class _SpeechToTextScreenState extends State<SpeechToTextScreen> {
                       title: "START",
                       ontap: () {
                         setState(() {
-                          startListenNow();
+                          speechToTextModel.startListenNow(context);
                           isLoading = true;
                         });
                       }),
@@ -113,7 +85,7 @@ class _SpeechToTextScreenState extends State<SpeechToTextScreen> {
                       title: "Stop",
                       ontap: () {
                         setState(() {
-                          startListenNow();
+                          speechToTextModel.startListenNow(context);
                           isLoading = false;
                         });
                       })
