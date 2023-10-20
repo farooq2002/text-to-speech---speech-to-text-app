@@ -138,14 +138,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           builder: (context) => const SpeechToTextScreen()));
                 },
               ),
-              IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const TtsWidget()));
-                  },
-                  icon: const Icon(Icons.share))
             ],
           ),
         ),

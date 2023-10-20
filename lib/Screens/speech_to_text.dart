@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:texttospeech/models/speech_to_text.dart';
-
 import 'package:texttospeech/widgets/icon_button.dart';
 import 'package:texttospeech/widgets/round_button.dart';
 
