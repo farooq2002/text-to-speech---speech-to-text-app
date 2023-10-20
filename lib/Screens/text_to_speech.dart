@@ -1,10 +1,10 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:texttospeech/Screens/speech_to_text.dart';
-import 'package:texttospeech/Screens/tts.dart';
+
 import 'package:texttospeech/widgets/custom_textfeild.dart';
 import 'package:texttospeech/widgets/round_button.dart';
-import 'package:texttospeech/widgets/text_to_voice.dart';
+import 'package:texttospeech/models/text_to_voice.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -138,14 +138,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           builder: (context) => const SpeechToTextScreen()));
                 },
               ),
-              IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const TtsWidget()));
-                  },
-                  icon: const Icon(Icons.share))
             ],
           ),
         ),
